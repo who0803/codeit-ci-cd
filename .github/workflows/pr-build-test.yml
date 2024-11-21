@@ -1,0 +1,39 @@
+name: PR Build and Test
+
+on:
+  pull_request:
+    branches:
+      - main  # PR 대상 브랜치를 지정합니다.
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18, 20]  # Node.js 버전 매트릭스
+
+    steps:
+      # 1. 리포지토리 체크아웃
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      # 2. Node.js 설정
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # 3. 의존성 설치 (bahmutov/npm-install 사용, useLockFile: false)
+      - name: 📥 Install dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false  # .lock 파일을 무시하고 의존성을 설치
+
+      # 4. 빌드 실행
+      - name: 🏗️ Run build
+        run: npm run build
+
+      # 5. 테스트 실행
+      - name: 🧪 Run tests
+        run: npm run test
