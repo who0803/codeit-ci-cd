@@ -6,10 +6,11 @@ on:
       - main  # PR 대상 브랜치를 지정합니다.
 
 jobs:
-  build-and-test:
+  main:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         node-version: [18, 20]  # Node.js 버전 매트릭스
 
