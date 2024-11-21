@@ -1,0 +1,15 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto # 자동으로 목표 설정
+        threshold: 80% # 최소 커버리지 80% 이상 요구
+        base: auto # 기본 커버리지를 자동으로 설정
+
+comment:
+  layout: "diff, flags, files" # diff, flags, files 항목 표시
+  behavior: default # 기본 댓글 동작
+  require_changes: false # 커버리지가 변경되었을 때만 댓글을 올리기
+  require_base: false # 기본 리포트가 없어도 댓글을 올리기
+  require_head: true # 헤드 리포트가 있어야 댓글을 올리기
+  hide_project_coverage: false # 프로젝트 커버리지를 숨기지 않음
