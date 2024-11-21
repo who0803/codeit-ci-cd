@@ -39,7 +39,7 @@ jobs:
       - name: 🧪 Run tests
         run: npm run test
 
-      # 6. 커버리지 리포트 업로드 to Codecov!
+      # 6. 커버리지 리포트 업로드 to Codecov
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         with:
